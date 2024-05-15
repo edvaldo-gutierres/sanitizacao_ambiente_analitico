@@ -15,3 +15,7 @@ Essa job realiza a atualização da tabela de controle, usada no processo de san
 select * from dw_refined.data_engineer.tab_analytical_tables_sanitization
 ```
 
+Para instalar as dependências do projeto, execute o comando
+```bash
+pip install -r requirements.txt
+```

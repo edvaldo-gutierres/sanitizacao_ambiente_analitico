@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models.tables_sanitization import Base, Tables_Sanitization
 
 # Importa função de controle de variaveis
 from controllers.env_controller import EnvironmentController
@@ -33,7 +32,7 @@ class DatabaseService:
 
         # Cria um objeto Engine que faz a ponte entre o banco de dados e a aplicação
         self.engine = create_engine(connection_string)
-        # Base.metadata.create_all(self.engine)                         # tabela já está criada
+        # Base.metadata.create_all(self.engine)                         # tabela já está criada, ative para criar tabela
 
         # Configura o factory sessionmaker para criar novas sessões vinculadas ao engine
         self.Session = sessionmaker(bind=self.engine)
