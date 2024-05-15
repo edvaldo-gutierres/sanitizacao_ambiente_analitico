@@ -41,7 +41,7 @@ def registra_processo_sanitizacao(df: pd.DataFrame) -> None:
 
 
 def envia_notificacao() -> None:
-    # Registra o processo de sanitização para contabilização
+    # Envia notificação de sanitização da tabela
     pass
 
 
