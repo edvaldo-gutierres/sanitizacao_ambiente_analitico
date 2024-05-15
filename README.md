@@ -1,6 +1,7 @@
 # Projeto Sanitização automática de objetos de ambientes analíticos
 
-Esse projeto tem como objetivo automatizar o processo de movimentação de entidades (tabelas) não utilizadas em periodo determinado, para um banco de dados denominado [dbthanos]. Onde a partir de um outro periodo determinado deverá ter sua exclusão definitiva do banco de dados, conforme exposta na documentação de procedimento interno da compania.
+O objetivo do projeto é automatizar a sanitização de ambientes analíticos, excluindo objetos não utilizados por mais de 60 dias e armazenando-os temporariamente em um banco dedicado para esse fim. Após 90 dias, os objetos serão permanentemente excluídos, seguindo as diretrizes da Governança de Dados da Minerva S.A. e suas controladas.
+
 
 ## Documentação interna
 https://wiki.minervafoods.com/xwiki/bin/view/Tecnologia/Procedimento%20Operacional%20Padr%C3%A3o/Engenharia%20de%20Dados/.Constru%C3%A7%C3%A3o/Procedimento%20de%20Sanitiza%C3%A7%C3%A3o/
