@@ -24,7 +24,6 @@ A orquestração dos dados que atualizam a tabela, foi desenvolvida no pentaho (
 
 A estrutura de pastas foi organizada seguindo princípios de orientação a objetos, conforme preferência do autor.
 
-- 
 * **controller/**: Pasta onde se encontram todas as funções criadas, referentes à operações de banco de dados.
 * **model/**: Pasta onde se encontram as classes de banco de dados criadas, referentes às tabelas do banco.
 * **assets/**: Pasta onde se encontram os arquivos estáticos, como imagens, planilhas, etc.
