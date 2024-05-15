@@ -40,6 +40,11 @@ def registra_processo_sanitizacao(df: pd.DataFrame) -> None:
     pass
 
 
+def envia_notificacao() -> None:
+    # Registra o processo de sanitização para contabilização
+    pass
+
+
 def main():
 
     # Carrega as variáveis de ambiente
