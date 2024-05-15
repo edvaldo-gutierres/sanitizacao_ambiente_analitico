@@ -13,18 +13,16 @@ As entidades elegíveis ao processo de sanitização estão relacionadas na tabe
 select * from dw_refined.data_engineer.tab_analytical_tables_sanitization
 ```
 
-O origem e orquestração da tabela podem ser conferidas em:
+A orquestração dos dados que atualizam a tabela, foi desenvolvida no pentaho (by Mateus Malta) e está localizada na pasta:
+`/home/.Oficial/Data Governance/Sanitization Tables`:
 
 ![Job Orquestratora Pentaho](assets/image.png)
 
-`/home/.Oficial/Data Governance/Sanitization Tables`
 
 
 # Estrutura de Pasta
 
 A estrutura de pastas foi organizada seguindo princípios de orientação a objetos, conforme preferência do autor.
-
-Estrutura de pastas:
 - 
 * **controller/**: Pasta onde se encontram todas as funções criadas, referentes à operações de banco de dados.
 * **model/**: Pasta onde se encontram as classes de banco de dados criadas, referentes às tabelas do banco.
