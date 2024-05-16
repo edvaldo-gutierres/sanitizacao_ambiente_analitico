@@ -5,6 +5,7 @@ import pandas as pd
 from controllers.tables_sanitization_controller import (
     list_table_sanitization,
     create_schema_dbthanos,
+    get_create_table_origin,
 )
 from controllers.env_controller import EnvironmentController
 
@@ -54,6 +55,7 @@ def main():
     # Cria DataFrame com as informações das tabelas a serem sanitizadas
     table_sanit_data = lista_tabelas(data_base=database)
     df_table_sanit = pd.DataFrame(table_sanit_data)
+    # print(df_table_sanit)
     df_table_sanit["create_schema"] = (
         df_table_sanit["database_name"] + "_" + df_table_sanit["schema_name"]
     )
@@ -63,6 +65,8 @@ def main():
 
     ######################### CRIAR TABELA NO [dbthanos] #########################
     criar_tabelas_no_dbthanos(df_table_sanit)
+
+    print(get_create_table_origin("dw_hml", "dim_categoria"))
 
 
 if __name__ == "__main__":
