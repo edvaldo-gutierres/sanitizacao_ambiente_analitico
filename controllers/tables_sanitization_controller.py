@@ -129,7 +129,7 @@ def write_log_sanitization(tab_log: str, ddl_type: str, database_name: str, sche
                 'database_name': database_name,
                 'schema_name': schema_name,
                 'table_name': table_name,
-                'row_process_timestamp': row_process_timestamp
+                'row_process_timestamp': datetime.now()
             }
         )
 
@@ -230,7 +230,13 @@ def create_table_dbthanos(old_db: str, new_db: str, schema_name: str, table_name
         # Fazer o commit da transação
         session.commit()
 
-        write_log_sanitization(tab_log=tab_log, ddl_type='insert', database_name=new_db, schema_name=old_db+'_'+schema_name, table_name=table_name)
+        # Grava log
+        write_log_sanitization(
+            tab_log=tab_log, 
+            ddl_type='insert', 
+            database_name=new_db, 
+            schema_name=f"{old_db}_{schema_name}", 
+            table_name=table_name, )
        
     except SQLAlchemyError as err:
         # Capturar e imprimir erros de programação
@@ -273,7 +279,14 @@ def drop_table_origin(database: str, schema_name: str, table_name: str ) -> None
         # Fazer o commit da transação
         session.commit()
 
-        write_log_sanitization(tab_log=tab_log, ddl_type='drop', database_name=database, schema_name=+schema_name, table_name=table_name)
+        # Grava log
+        write_log_sanitization(
+            tab_log=tab_log, 
+            ddl_type='drop', 
+            database_name=database, 
+            schema_name=schema_name, 
+            table_name=table_name
+            )
        
     except SQLAlchemyError as err:
         # Capturar e imprimir erros de programação
