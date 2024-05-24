@@ -1,4 +1,4 @@
-# service
+# 📂 Service
 
 Esta pasta contém serviços que gerenciam a conexão e interações com o banco de dados.
 
