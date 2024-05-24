@@ -3,12 +3,15 @@ from sqlalchemy import text
 from sqlalchemy.exc import ProgrammingError, SQLAlchemyError
 import pandas as pd
 from datetime import datetime
+import os
+import csv
 
 # Importa modulos
 from service.database import DatabaseService
 
 # Informa nome da tabela de log
-tab_log = 'dw_hml.data_engineer.tab_log_sanitization'
+tab_log = "dw_hml.data_engineer.tab_log_sanitization"
+
 
 # Função para listar tabelas elegíveis para sanitização
 def list_table_sanitization(data_base: str) -> pd.DataFrame:
@@ -94,8 +97,9 @@ def list_table_sanitization(data_base: str) -> pd.DataFrame:
         print(f"Erro ao listar as tabelas para sanitização: {err}")
 
 
-
-def write_log_sanitization(tab_log: str, ddl_type: str, database_name: str, schema_name: str, table_name: str) -> None:
+def write_log_sanitization(
+    tab_log: str, ddl_type: str, database_name: str, schema_name: str, table_name: str
+) -> None:
     """
     Grava um log de sanitização na tabela especificada.
 
@@ -110,6 +114,7 @@ def write_log_sanitization(tab_log: str, ddl_type: str, database_name: str, sche
     Retorna:
     None
     """
+    process_date = datetime.now()
     try:
         # Criar uma instância de DatabaseService
         db_service = DatabaseService()
@@ -122,28 +127,57 @@ def write_log_sanitization(tab_log: str, ddl_type: str, database_name: str, sche
 
         # Inserir os dados na tabela de log
         session.execute(
-            text(f"INSERT INTO {tab_log} (ddl_type, database_name, schema_name, table_name, row_process_timestamp) "
-                 "VALUES (:ddl_type, :database_name, :schema_name, :table_name, :row_process_timestamp)"),
+            text(
+                f"INSERT INTO {tab_log} (ddl_type, database_name, schema_name, table_name, row_process_timestamp) "
+                "VALUES (:ddl_type, :database_name, :schema_name, :table_name, :row_process_timestamp)"
+            ),
             {
-                'ddl_type': ddl_type,
-                'database_name': database_name,
-                'schema_name': schema_name,
-                'table_name': table_name,
-                'row_process_timestamp': datetime.now()
-            }
+                "ddl_type": ddl_type,
+                "database_name": database_name,
+                "schema_name": schema_name,
+                "table_name": table_name,
+                "row_process_timestamp": process_date,
+            },
         )
 
         # Fazer o commit da transação
         session.commit()
-       
+
     except SQLAlchemyError as err:
         # Capturar e imprimir erros de programação
         print(f"Houve um erro ao gravar o log: {err}")
-    
+
     finally:
         # Garantir que a sessão seja fechada
         session.close()
 
+    # Definir o caminho do arquivo CSV
+    csv_file_path = "log/log_sanitization.csv"
+
+    # Garantir que o diretório exista
+    os.makedirs(os.path.dirname(csv_file_path), exist_ok=True)
+
+    # Gravar os dados no arquivo CSV no modo de sobrescrita
+    with open(
+        csv_file_path, mode="a", newline=""
+    ) as file:  # mode: a = append | w = overwrite
+        writer = csv.writer(file)
+
+        # Escrever o cabeçalho
+        writer.writerow(
+            [
+                "ddl_type",
+                "database_name",
+                "schema_name",
+                "table_name",
+                "row_process_timestamp",
+            ]
+        )
+
+        # Escrever os dados
+        writer.writerow(
+            [ddl_type, database_name, schema_name, table_name, process_date]
+        )
 
 
 # Função para criar schema no banco dbthanos
@@ -194,17 +228,17 @@ def create_schema_dbthanos(schema_name: str) -> None:
             print(f"Schema '{schema_name}' já existe.")
         else:
             print(f"Houve um erro ao tentar criar o schema no banco de dados: {err}")
-    
-
 
 
 # Função para criar tabelas no banco dbthanos
-def create_table_dbthanos(old_db: str, new_db: str, schema_name: str, table_name: str ) -> None:
+def create_table_dbthanos(
+    old_db: str, new_db: str, schema_name: str, table_name: str
+) -> None:
     """
     Função para criar tabelas no banco dbthanos.
 
     Esta função copia uma tabela existente de um banco de dados e esquema de origem para o banco de dados de sanitização.
-    
+
     Parâmetros:
     old_db (str): Nome do banco de dados antigo.
     new_db (str): Nome do novo banco de dados.
@@ -222,39 +256,41 @@ def create_table_dbthanos(old_db: str, new_db: str, schema_name: str, table_name
         # Executar o comando USE
         session.execute(text(f"USE {new_db}"))
 
-        # Executa o INSERT 
-        cursor = session.execute(text(
-            f"SELECT * INTO {new_db}.{old_db}_{schema_name}.{table_name} FROM {old_db}.{schema_name}.{table_name}"
-        ))
+        # Executa o INSERT
+        cursor = session.execute(
+            text(
+                f"SELECT * INTO {new_db}.{old_db}_{schema_name}.{table_name} FROM {old_db}.{schema_name}.{table_name}"
+            )
+        )
 
         # Fazer o commit da transação
         session.commit()
 
         # Grava log
         write_log_sanitization(
-            tab_log=tab_log, 
-            ddl_type='insert', 
-            database_name=new_db, 
-            schema_name=f"{old_db}_{schema_name}", 
-            table_name=table_name, )
-       
+            tab_log=tab_log,
+            ddl_type="insert",
+            database_name=new_db,
+            schema_name=f"{old_db}_{schema_name}",
+            table_name=table_name,
+        )
+
     except SQLAlchemyError as err:
         # Capturar e imprimir erros de programação
         print(f"Houve um erro ao tentar criar a tabela no banco de dados: {err}")
-    
+
     finally:
         # Garantir que a sessão seja fechada
         session.close()
 
 
-
 # Função para excluir tabelas do banco de dados de origem
-def drop_table_origin(database: str, schema_name: str, table_name: str ) -> None:
+def drop_table_origin(database: str, schema_name: str, table_name: str) -> None:
     """
     Função para excluir tabelas elegíveis ao processo de sanitização.
 
     Esta função exclui a tabela elegível ao processo de sanitização do banco de dados.
-    
+
     Parâmetros:
     database (str): Nome do banco de dados.
     schema_name (str): Nome do esquema.
@@ -272,27 +308,26 @@ def drop_table_origin(database: str, schema_name: str, table_name: str ) -> None
         session.execute(text(f"USE {database}"))
 
         # Executa DROP TABLE
-        cursor = session.execute(text(
-            f"DROP TABLE {database}.{schema_name}.{table_name}"
-        ))
+        cursor = session.execute(
+            text(f"DROP TABLE {database}.{schema_name}.{table_name}")
+        )
 
         # Fazer o commit da transação
         session.commit()
 
         # Grava log
         write_log_sanitization(
-            tab_log=tab_log, 
-            ddl_type='drop', 
-            database_name=database, 
-            schema_name=schema_name, 
-            table_name=table_name
-            )
-       
+            tab_log=tab_log,
+            ddl_type="drop",
+            database_name=database,
+            schema_name=schema_name,
+            table_name=table_name,
+        )
+
     except SQLAlchemyError as err:
         # Capturar e imprimir erros de programação
         print(f"Houve um erro ao tentar excluir a tabela do banco de dados: {err}")
-    
+
     finally:
         # Garantir que a sessão seja fechada
         session.close()
-

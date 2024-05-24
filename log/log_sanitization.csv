@@ -1,0 +1,2 @@
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+drop,dw_hml,datamart_rh,tab_rh_wip_movimentacoes,2024-05-24 11:14:52.742565

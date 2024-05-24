@@ -45,6 +45,7 @@ A tecnologia de banco de dados utilizada foi o SQL Server, e o ORM utilizado foi
 2. 📦 Instale as dependências:
     ```bash
     pip install -r requirements.txt
+    pre-commit install
     ```
 3. 🛠️ Configure as variáveis de ambiente criando um arquivo `.env` na raiz do projeto:
     ```
