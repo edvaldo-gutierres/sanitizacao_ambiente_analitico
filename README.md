@@ -1,8 +1,8 @@
 # Projeto Sanitização automática de objetos de ambientes analíticos
 
-O objetivo do projeto é automatizar a sanitização de ambientes analíticos, excluindo objetos não utilizados por mais de 60 dias e armazenando-os temporariamente em um banco dedicado para esse fim. Após 90 dias, os objetos serão permanentemente excluídos, seguindo as diretrizes da Governança de Dados da Minerva S.A. e suas controladas.
+O objetivo do projeto é automatizar a sanitização de ambientes analíticos, excluindo objetos não utilizados por mais de 60 dias e armazenando-os temporariamente em um banco dedicado para esse fim.
 
-
+<!--
 ## Documentação interna
 Para mais detalhes sobre o procedimento de sanitização, consulte a [Documentação Interna](https://wiki.minervafoods.com/xwiki/bin/view/Tecnologia/Procedimento%20Operacional%20Padr%C3%A3o/Engenharia%20de%20Dados/.Constru%C3%A7%C3%A3o/Procedimento%20de%20Sanitiza%C3%A7%C3%A3o/).
 
@@ -19,7 +19,7 @@ A orquestração dos dados que atualizam a tabela, foi desenvolvida no pentaho (
 
 ![Job Orquestratora Pentaho](assets/image.png)
 
-
+-->
 
 # 📂 Estrutura de Pasta
 
