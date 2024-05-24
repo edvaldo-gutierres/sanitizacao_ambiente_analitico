@@ -21,18 +21,18 @@ A orquestração dos dados que atualizam a tabela, foi desenvolvida no pentaho (
 
 
 
-# Estrutura de Pasta
+# 📂 Estrutura de Pasta
 
 A estrutura de pastas foi organizada seguindo princípios de orientação a objetos, conforme preferência do autor.
 
+* **assets/**: Pasta onde se encontram os arquivos estáticos, como imagens, planilhas, etc.
 * **controller/**: Pasta onde se encontram todas as funções criadas, referentes à operações de banco de dados.
 * **model/**: Pasta onde se encontram as classes de banco de dados criadas, referentes às tabelas do banco.
-* **assets/**: Pasta onde se encontram os arquivos estáticos, como imagens, planilhas, etc.
 * **service/**: Pasta onde se encontram as funções criadas para conexão ao banco de dados.
 * **tests/**: Pasta onde se encontram os testes de qualidade de dados.
 
 
-# Banco de dados e ORM
+# 💾 Banco de dados e ORM
 A tecnologia de banco de dados utilizada foi o SQL Server, e o ORM utilizado foi o sqlalchemy.
 
 
