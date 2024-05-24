@@ -37,6 +37,7 @@ A estrutura de pastas foi organizada seguindo princípios de orientação a obje
 * **service/**: Contém serviços que gerenciam a conexão e interações com o banco de dados.
   - `database.py`: Define a classe `DatabaseService` para gerenciar a conexão com o banco de dados e fornecer sessões.
 * **tests/**: Pasta onde se encontram os testes de qualidade de dados.
+  - `test_database.py`: Contém testes para verificar a conexão com o banco de dados e a existência de tabelas.
 
 
 # 💾 Banco de dados e ORM
