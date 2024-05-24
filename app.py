@@ -46,11 +46,6 @@ def drop_tabelas_origem(df: pd.DataFrame) -> None:
         )
 
 
-def registra_processo_sanitizacao(df: pd.DataFrame) -> None:
-    # Registra o processo de sanitização para contabilização
-    pass
-
-
 def envia_notificacao() -> None:
     # Envia notificação de sanitização da tabela
     pass
@@ -88,3 +83,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    print('Processo finalizado com sucesso!!!')

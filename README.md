@@ -4,7 +4,7 @@ O objetivo do projeto é automatizar a sanitização de ambientes analíticos, e
 
 
 ## Documentação interna
-https://wiki.minervafoods.com/xwiki/bin/view/Tecnologia/Procedimento%20Operacional%20Padr%C3%A3o/Engenharia%20de%20Dados/.Constru%C3%A7%C3%A3o/Procedimento%20de%20Sanitiza%C3%A7%C3%A3o/
+Para mais detalhes sobre o procedimento de sanitização, consulte a [Documentação Interna](https://wiki.minervafoods.com/xwiki/bin/view/Tecnologia/Procedimento%20Operacional%20Padr%C3%A3o/Engenharia%20de%20Dados/.Constru%C3%A7%C3%A3o/Procedimento%20de%20Sanitiza%C3%A7%C3%A3o/).
 
 
 # Entidades
