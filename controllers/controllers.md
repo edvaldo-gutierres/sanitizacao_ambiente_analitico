@@ -1,4 +1,4 @@
-# Controllers
+# 📂 Controllers
 
 Esta pasta contém módulos que gerenciam as diferentes partes do processo de sanitização.
 
