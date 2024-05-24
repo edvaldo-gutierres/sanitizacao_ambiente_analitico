@@ -1,6 +1,9 @@
 USE dw_hml;
 
-SELECT * FROM  dw_hml.data_engineer.tab_log_sanitization
+/*
+DROP TABLE IF EXISTS dw_hml.data_engineer.tab_log_sanitization ;
+*/
+SELECT * FROM dw_hml.data_engineer.tab_log_sanitization (NOLOCK)
 
 -- Tabela de controle
 SELECT id,
@@ -19,6 +22,7 @@ WHERE 1 = 1
       AND qty_days > 60;
 
 
+
 -- tabelas exemplos
 SELECT * FROM dw_hml.datamart_rh.dim_calendario;
 SELECT * FROM dw_hml.datamart_rh.dim_categoria;
@@ -34,12 +38,6 @@ SELECT * FROM dw_hml.datamart_rh.dim_tipo_admissao;
 SELECT * FROM dw_hml.datamart_rh.dim_tipo_funcionario;
 SELECT * FROM dw_hml.datamart_rh.dim_tipo_situacao;
 SELECT * FROM dw_hml.datamart_rh.fato_funcionario_evento;
-SELECT * FROM dw_hml.datamart_rh.pentaho_log_job;
-SELECT * FROM dw_hml.datamart_rh.pentaho_log_job_step;
-SELECT * FROM dw_hml.datamart_rh.tab_rh_base_variaveis_beneficios;
-SELECT * FROM dw_hml.datamart_rh.tab_rh_br_fato_custo_medio;
-SELECT * FROM dw_hml.datamart_rh.tab_rh_br_funcionario_SAP_backup_19092023;
-SELECT * FROM dw_hml.datamart_rh.tab_rh_br_funcionario_SAP_bkp_29112023;
 SELECT * FROM dw_hml.datamart_rh.tab_rh_br_justificativas_fluig;
 SELECT * FROM dw_hml.datamart_rh.tab_rh_br_justificativas_infracao;
 SELECT * FROM dw_hml.datamart_rh.tab_rh_br_stage_KSB1_custo_medio;
@@ -62,11 +60,6 @@ SELECT * FROM dbthanos.dw_hml_datamart_rh.dim_tipo_funcionario;
 SELECT * FROM dbthanos.dw_hml_datamart_rh.dim_tipo_situacao;
 SELECT * FROM dbthanos.dw_hml_datamart_rh.fato_funcionario_evento;
 SELECT * FROM dbthanos.dw_hml_datamart_rh.pentaho_log_job;
-SELECT * FROM dbthanos.dw_hml_datamart_rh.pentaho_log_job_step;
-SELECT * FROM dbthanos.dw_hml_datamart_rh.tab_rh_base_variaveis_beneficios;
-SELECT * FROM dbthanos.dw_hml_datamart_rh.tab_rh_br_fato_custo_medio;
-SELECT * FROM dbthanos.dw_hml_datamart_rh.tab_rh_br_funcionario_SAP_backup_19092023;
-SELECT * FROM dbthanos.dw_hml_datamart_rh.tab_rh_br_funcionario_SAP_bkp_29112023;
 SELECT * FROM dbthanos.dw_hml_datamart_rh.tab_rh_br_justificativas_fluig;
 SELECT * FROM dbthanos.dw_hml_datamart_rh.tab_rh_br_justificativas_infracao;
 SELECT * FROM dbthanos.dw_hml_datamart_rh.tab_rh_br_stage_KSB1_custo_medio;
@@ -74,7 +67,7 @@ SELECT * FROM dbthanos.dw_hml_datamart_rh.tab_rh_wip_movimentacoes;
 
 
 -- EXCLUI TABELAS DE EXEMPLO DO DBTHANOS
-/*
+
 DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.dim_calendario;
 DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.dim_categoria;
 DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.dim_empresa;
@@ -89,21 +82,15 @@ DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.dim_tipo_admissao;
 DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.dim_tipo_funcionario;
 DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.dim_tipo_situacao;
 DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.fato_funcionario_evento;
-DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.pentaho_log_job;
-DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.pentaho_log_job_step;
-DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.tab_rh_base_variaveis_beneficios;
-DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.tab_rh_br_fato_custo_medio;
-DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.tab_rh_br_funcionario_SAP_backup_19092023;
-DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.tab_rh_br_funcionario_SAP_bkp_29112023;
 DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.tab_rh_br_justificativas_fluig;
 DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.tab_rh_br_justificativas_infracao;
 DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.tab_rh_br_stage_KSB1_custo_medio;
 DROP TABLE IF EXISTS dbthanos.dw_hml_datamart_rh.tab_rh_wip_movimentacoes;
-*/
+
 
 -- Copiando tabelas de exemplo do banco de dados dw para o banco de dados dw_hml
 
-/*
+
 SELECT * 
 INTO dw_hml.datamart_rh.dim_calendario
 FROM dw.datamart_rh.dim_calendario;
@@ -161,30 +148,6 @@ INTO dw_hml.datamart_rh.fato_funcionario_evento
 FROM dw.datamart_rh.fato_funcionario_evento;
 
 SELECT * 
-INTO dw_hml.datamart_rh.pentaho_log_job
-FROM dw.datamart_rh.pentaho_log_job;
-
-SELECT * 
-INTO dw_hml.datamart_rh.pentaho_log_job_step
-FROM dw.datamart_rh.pentaho_log_job_step;
-
-SELECT * 
-INTO dw_hml.datamart_rh.tab_rh_base_variaveis_beneficios
-FROM dw.datamart_rh.tab_rh_base_variaveis_beneficios;
-
-SELECT * 
-INTO dw_hml.datamart_rh.tab_rh_br_fato_custo_medio
-FROM dw.datamart_rh.tab_rh_br_fato_custo_medio;
-
-SELECT * 
-INTO dw_hml.datamart_rh.tab_rh_br_funcionario_SAP_backup_19092023
-FROM dw.datamart_rh.tab_rh_br_funcionario_SAP_backup_19092023;
-
-SELECT * 
-INTO dw_hml.datamart_rh.tab_rh_br_funcionario_SAP_bkp_29112023
-FROM dw.datamart_rh.tab_rh_br_funcionario_SAP_bkp_29112023;
-
-SELECT * 
 INTO dw_hml.datamart_rh.tab_rh_br_justificativas_fluig
 FROM dw.datamart_rh.tab_rh_br_justificativas_fluig;
 
@@ -199,7 +162,7 @@ FROM dw.datamart_rh.tab_rh_br_stage_KSB1_custo_medio;
 SELECT * 
 INTO dw_hml.datamart_rh.tab_rh_wip_movimentacoes
 FROM dw.datamart_rh.tab_rh_wip_movimentacoes;
-*/
+
 
 
 
