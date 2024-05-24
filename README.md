@@ -25,10 +25,17 @@ A orquestração dos dados que atualizam a tabela, foi desenvolvida no pentaho (
 
 A estrutura de pastas foi organizada seguindo princípios de orientação a objetos, conforme preferência do autor.
 
-* **assets/**: Pasta onde se encontram os arquivos estáticos, como imagens, planilhas, etc.
-* **controller/**: Pasta onde se encontram todas as funções criadas, referentes à operações de banco de dados.
-* **model/**: Pasta onde se encontram as classes de banco de dados criadas, referentes às tabelas do banco.
-* **service/**: Pasta onde se encontram as funções criadas para conexão ao banco de dados.
+* **controllers/**: Contém módulos que gerenciam as diferentes partes do processo de sanitização.
+  - `env_controller.py`: Gerencia as variáveis de ambiente.
+  - `tables_sanitization_controller.py`: Contém funções para listar, criar e excluir tabelas e schemas.
+  - `notification_controller.py`: Gerencia o envio de notificações por e-mail.
+* **log/**: Diretório para armazenar arquivos de log.
+  - `log_sanitization.csv`: Arquivo CSV que contém os logs das tabelas sanitizadas.
+* **models/**: Contém os modelos declarativos SQLAlchemy.
+  - `tab_logs.py`: Define a estrutura da tabela de logs de sanitização.
+  - `tables_sanitization.py`: Define a estrutura da tabela de sanitização de tabelas analíticas.
+* **service/**: Contém serviços que gerenciam a conexão e interações com o banco de dados.
+  - `database.py`: Define a classe `DatabaseService` para gerenciar a conexão com o banco de dados e fornecer sessões.
 * **tests/**: Pasta onde se encontram os testes de qualidade de dados.
 
 
