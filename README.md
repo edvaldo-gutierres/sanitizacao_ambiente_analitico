@@ -36,8 +36,25 @@ A estrutura de pastas foi organizada seguindo princípios de orientação a obje
 A tecnologia de banco de dados utilizada foi o SQL Server, e o ORM utilizado foi o sqlalchemy.
 
 
-# Ambiente
-Para instalar as dependências do projeto, execute o comando
-```bash
-pip install -r requirements.txt
-```
+# Instalação
+
+1. 📥 Clone o repositório:
+    ```sh
+    git clone https://github.com/edvaldo-gutierres/artefatos_pentaho
+    ```
+2. 📦 Instale as dependências:
+    ```bash
+    pip install -r requirements.txt
+    ```
+3. 🛠️ Configure as variáveis de ambiente criando um arquivo `.env` na raiz do projeto:
+    ```
+    SERVER=<endereco-do-servidor>
+    DATABASE=<nome-do-banco-de-dados>
+    USER=<seu-usuario>
+    PASSWORD=<sua-senha>
+    ```
+4. ▶️ Execute o projeto:
+    ```sh
+    python app.py
+    ```
+---
