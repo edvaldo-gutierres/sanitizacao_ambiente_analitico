@@ -1,4 +1,4 @@
-# models
+# 📂 Models
 
 Esta pasta contém os modelos declarativos SQLAlchemy usados no projeto para mapear tabelas do banco de dados em classes Python.
 
