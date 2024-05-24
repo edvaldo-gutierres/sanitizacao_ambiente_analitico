@@ -27,7 +27,7 @@ def get_secret_from_keyvault(vault_url: str, secret_name: str) -> str:
 
 
 # Função para envio de notificação via -email
-def send_notification(destinatario: str, assunto: str, lista_tabelas: list) -> None:
+def send_notification(destinatario: str, assunto: str) -> None:
 
     # Recupera a senha do e-mail do Key Vault
     email_password = get_secret_from_keyvault(key_vault_url, secret_name)
@@ -41,11 +41,10 @@ def send_notification(destinatario: str, assunto: str, lista_tabelas: list) -> N
     msg["Subject"] = assunto
 
     # Cria a lista de valores em formato de string
-    lista_tabelas_str = "\n".join(lista_tabelas)
-    mensagem = "Processo de Sanitização das tabelas concluído com sucesso, segue tabelas sanitizadas:"
+    mensagem = "Processo de Sanitização das tabelas concluído com sucesso."
 
     # Adiciona o corpo da mensagem
-    mensagem_completa = f"{mensagem}\n\nLista de tabelas:\n{lista_tabelas_str}\n\n)"
+    mensagem_completa = f"{mensagem}\n\n"
     msg.attach(MIMEText(mensagem_completa, "plain"))
 
     # Configura o servidor SMTP

@@ -1,5 +1,6 @@
 # Importa Bibliotecas
 import pandas as pd
+import csv
 
 # Importa módulos
 from controllers.env_controller import EnvironmentController
@@ -89,7 +90,6 @@ def main():
         # envia_notificacao(
         #     destinatario='edvaldo.ferreira@minervafoods.com',
         #     assunto='Notificação de Sanitização de Tabela',
-        #     lista_tabelas=['tabela1', 'tabela2', 'tabela3']
         # )
 
     except Exception as e:
