@@ -163,17 +163,6 @@ def write_log_sanitization(
     ) as file:  # mode: a = append | w = overwrite
         writer = csv.writer(file)
 
-        # Escrever o cabeçalho
-        writer.writerow(
-            [
-                "ddl_type",
-                "database_name",
-                "schema_name",
-                "table_name",
-                "row_process_timestamp",
-            ]
-        )
-
         # Escrever os dados
         writer.writerow(
             [ddl_type, database_name, schema_name, table_name, process_date]

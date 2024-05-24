@@ -1,2 +1,28 @@
 ddl_type,database_name,schema_name,table_name,row_process_timestamp
 drop,dw_hml,datamart_rh,tab_rh_wip_movimentacoes,2024-05-24 11:14:52.742565
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+insert,dbthanos,dw_hml_datamart_rh,dim_calendario,2024-05-24 11:56:42.666479
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+insert,dbthanos,dw_hml_datamart_rh,dim_categoria,2024-05-24 11:56:43.726919
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+insert,dbthanos,dw_hml_datamart_rh,dim_empresa,2024-05-24 11:56:44.723860
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+insert,dbthanos,dw_hml_datamart_rh,dim_evento,2024-05-24 11:56:46.009190
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+insert,dbthanos,dw_hml_datamart_rh,dim_filial,2024-05-24 11:56:47.400641
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+insert,dbthanos,dw_hml_datamart_rh,dim_funcao,2024-05-24 11:56:48.799942
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+insert,dbthanos,dw_hml_datamart_rh,dim_relacao_emprego,2024-05-24 11:56:49.837252
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+insert,dbthanos,dw_hml_datamart_rh,dim_secao,2024-05-24 11:56:51.331167
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+insert,dbthanos,dw_hml_datamart_rh,dim_sindicato,2024-05-24 11:56:52.477974
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+insert,dbthanos,dw_hml_datamart_rh,dim_situacao,2024-05-24 11:56:53.995423
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+insert,dbthanos,dw_hml_datamart_rh,dim_tipo_admissao,2024-05-24 11:56:55.383415
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+insert,dbthanos,dw_hml_datamart_rh,dim_tipo_funcionario,2024-05-24 11:56:56.448632
+ddl_type,database_name,schema_name,table_name,row_process_timestamp
+insert,dbthanos,dw_hml_datamart_rh,dim_tipo_situacao,2024-05-24 11:56:57.436779
