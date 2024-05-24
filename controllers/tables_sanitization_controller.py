@@ -208,7 +208,7 @@ def drop_table_origin(database: str, schema_name: str, table_name: str ) -> None
 
         # Verificar se a tabela existe
         cursor = session.execute(text(
-            f"DROP TABLE IF EXISTS {database}.{schema_name}.{table_name}"
+            f"DROP TABLE {database}.{schema_name}.{table_name}"
         ))
 
         # Fazer o commit da transação
